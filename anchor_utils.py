@@ -314,8 +314,6 @@ def sample_anchors_for_training(anchor_labels,batch_size,prop_pos):
         """
         if batch_size >= len(anchor_labels):
             #include all anchors - should be rare
-            print('BATCH SIZE > ANCHOR LABELS')
-            print('RETURNING RANGE OBJECT')
             return np.arange(len(anchor_labels)).astype(np.int32)
 
         num_pos_anchors = np.round(batch_size*prop_pos).astype(np.int32)
@@ -325,12 +323,10 @@ def sample_anchors_for_training(anchor_labels,batch_size,prop_pos):
         neut_anchors = np.array([])
 
         if len(pos_anchors) > num_pos_anchors:
-            np.random.seed(0)
             pos_anchors = np.random.choice(pos_anchors,num_pos_anchors,replace=False)
 
         neg_to_sample = batch_size - len(pos_anchors)
         if len(neg_anchors) > neg_to_sample:
-            np.random.seed(0)
             neg_anchors = np.random.choice(neg_anchors,neg_to_sample,replace=False)
         
         neut_to_sample = batch_size - (len(neg_anchors) + len(pos_anchors))
@@ -338,7 +334,6 @@ def sample_anchors_for_training(anchor_labels,batch_size,prop_pos):
             #include neutral anchors as negative examples
             neut_anchors = np.where(anchor_labels == 0)[0]
             num_neut_anchors = batch_size - (len(pos_anchors) + len(neg_anchors))
-            np.random.seed(0)
             neut_anchors = np.random.choice(neut_anchors,num_neut_anchors,replace=False)
         
         return np.concatenate((pos_anchors,neg_anchors,neut_anchors)).astype(np.int32)
