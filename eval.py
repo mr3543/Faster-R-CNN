@@ -18,6 +18,6 @@ if __name__ == '__main__':
     
     imdb = Imdb('/content/image_data','val2017',cfg)
     od = ObjectDetector(net,imdb,cfg)
-    od.evaluate('/content/gdrive/My Drive/Faster-R-Cnn/results/coco_results.json',True)
+    od.evaluate('/content/gdrive/My Drive/Faster-R-CNN/results/coco_results.json',True)
 
 

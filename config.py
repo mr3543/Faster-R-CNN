@@ -24,7 +24,7 @@ cfg.NET.ROI_POOL_WIDTH = 7
 
 cfg.NET.NUM_CLASSES = 81
 
-colab_dir = '/content/gdrive/My Drive/Faster-R-Cnn'
+colab_dir = '/content/gdrive/My Drive/Faster-R-CNN'
 
 cfg.NET.BASE_MODEL_WEB_CKPT = colab_dir + '/model/base_model/web/vgg_16.ckpt'
 cfg.NET.BASE_MODEL_CKPT = colab_dir + '/model/base_model/base_model.ckpt'
