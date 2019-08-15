@@ -243,7 +243,7 @@ def get_anchor_labels(anchor_boxes,gt_boxes,pos_thresh,neg_thresh_lo,neg_thresh_
     # label the anchors with coco category classes
     cls_labels = np.zeros(np.shape(anchor_boxes)[0],dtype=np.int32)
     cls_labels[pos_anchors] = cls_gt_labels[max_gt_boxes[pos_anchors]] + 1
-    print('CLASS LABELS: ',cls_labels[pos_anchors])
+    
     return anchor_labels.astype(np.int32),bbox_adjs,cls_labels.astype(np.int32)
 
 def _compute_ious(a_boxes,gt_boxes):
@@ -340,5 +340,6 @@ def sample_anchors_for_training(anchor_labels,batch_size,prop_pos):
             num_neut_anchors = batch_size - (len(pos_anchors) + len(neg_anchors))
             np.random.seed(0)
             neut_anchors = np.random.choice(neut_anchors,num_neut_anchors,replace=False)
-        ret = np.concatenate((pos_anchors,neg_anchors,neut_anchors)).astype(np.int32)
-        return ret
+        
+        return np.concatenate((pos_anchors,neg_anchors,neut_anchors)).astype(np.int32)
+       
