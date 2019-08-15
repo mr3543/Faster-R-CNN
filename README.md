@@ -1,4 +1,4 @@
-# Faster R-CNN With TensorFlow and Google Colab
+## Faster R-CNN With TensorFlow and Google Colab
 
 This repo contains a tensorflow implementation of [Faster R-Cnn](https://arxiv.org/abs/1506.01497). We use vgg16 and the MS COCO database. This implementation borrows from the original implementation [here](https://github.com/rbgirshick/py-faster-rcnn) and another good tensorflow implementation [here](https://github.com/endernewton/tf-faster-rcnn).
 
@@ -12,7 +12,7 @@ Several modifications are made to the original [paper](https://arxiv.org/abs/150
 
 4) For simplicity, only vgg16 and MS COCO are supported. Some simplifications to the training process are also made. We do not apply image flipping, and due to computational constraints our training time is much less.
 
-# RoI Pooling:
+### RoI Pooling:
 
 RoI Pooling is an operation that takes a variable size crop of the vgg16 feature map and max pools the map down to a new 7x7 feature map. For example if the crop is 14x14 we would pool over 2x2 blocks to reduce the size to 7x7.
 
