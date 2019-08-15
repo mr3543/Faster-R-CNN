@@ -20,6 +20,6 @@ Our roi pooling implementation symmetrically pads the feature map crop with zero
 
 We then use the variable sized max pooling operation ```max_pool_v2``` in ```tensorflow.python_ops.gen.nn.ops``` to reduce the padded feature map to 7x7. See [here](https://github.com/tensorflow/tensorflow/pull/11875) for more details. 
 
-To run, open the file 'faster_rcnn.ipynb' in Google colab and follow the instructions. 
+To run, open the file 'faster_rcnn_colab.ipynb' in Google colab and follow the instructions. 
 
 
