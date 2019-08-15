@@ -942,12 +942,10 @@ class Network(object):
         feed_dict = {self.image:training_image,self.gt_boxes:training_gt_boxes}
 
         s,rpn_loss,rcnn_loss,_,__ = self.sess.run([self.summary_ops['merged_summary_op'],
-                    self.losses['rpn/total_loss'],self.losses['rcnn/total_loss'].
+                    self.losses['rpn/total_loss'],self.losses['rcnn/total_loss'],
                     self.training_ops['rpn_training_op'],self.training_ops['rcnn_training_op']],
                         feed_dict=feed_dict)
         self.writer.add_summary(s,iters)
-        print('RPN LOSS: ',rpn_loss)
-        print('RCNN LOSS: ',rcnn_loss)
 
     def train_step_debug(self,training_image,training_gt_boxes):
         """

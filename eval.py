@@ -16,7 +16,7 @@ if __name__ == '__main__':
     sess = tf.Session(graph = tf.Graph())
     net = Network(cfg,False,sess)
     
-    imdb = Imdb('/content/image_data','val2017',cfg)
+    imdb = Imdb('/content/image_data','test2017',cfg)
     od = ObjectDetector(net,imdb,cfg)
     od.evaluate('/content/gdrive/My Drive/Faster-R-CNN/results/coco_results.json',True)
 

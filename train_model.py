@@ -12,7 +12,7 @@ from ObjectDetector import ObjectDetector
 if __name__ == '__main__':
     """
     trains the faster rcnn model on the coco train2017 dataset 
-    
+
     """
     sess = tf.Session(graph = tf.Graph())
     net = Network(cfg,True,sess)

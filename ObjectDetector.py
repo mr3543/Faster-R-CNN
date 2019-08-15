@@ -6,6 +6,7 @@ import sys
 import gc
 from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
+import time
 
 class ObjectDetector(object):
     def __init__ (self,net,imdb,cfg):
@@ -51,7 +52,7 @@ class ObjectDetector(object):
             j=0
             while j < len(image_blob):
                 self.net.train_step(image_blob[j],roi_blob[j])
-                if i*len(image_blob) + j % 10 == 0:
+                if i*len(image_blob) + j % 100 == 0:
                     self.net.save_weights_to_ckpt()
                     print('TRAINING ON IMAGE NO {} IN BATCH {}\n'.format(j,i))
                     self.net.train_step_with_summary(image_blob[j],roi_blob[j],i*len(image_blob)+j)
@@ -110,7 +111,7 @@ class ObjectDetector(object):
 
         results = []
         image_ids = self.imdb.get_id_perm()
-        for j,im_id in enumerate(image_ids[:5]):
+        for j,im_id in enumerate(image_ids):
             image = self.imdb.get_image(im_id)
             orig_height = np.shape(image)[0]
             orig_width = np.shape(image)[1]
